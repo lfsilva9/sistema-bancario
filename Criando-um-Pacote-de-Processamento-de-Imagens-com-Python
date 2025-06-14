@@ -1,0 +1,21 @@
+import cv2
+
+# 1. Carregar a imagem
+imagem = cv2.imread('imagem.jpg')  # Substitua 'imagem.jpg' pelo caminho da sua imagem
+cv2.imshow('Imagem Original', imagem)
+
+# 2. Converter para escala de cinza
+imagem_cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
+cv2.imshow('Imagem em Cinza', imagem_cinza)
+
+# 3. Aplicar um desfoque Gaussiano
+imagem_blur = cv2.GaussianBlur(imagem_cinza, (5, 5), 0)
+cv2.imshow('Imagem com Blur', imagem_blur)
+
+# 4. Detecção de bordas usando Canny
+bordas = cv2.Canny(imagem_blur, 50, 150)
+cv2.imshow('Bordas Canny', bordas)
+
+# 5. Aguardar tecla para fechar janelas
+cv2.waitKey(0)
+cv2.destroyAllWindows()
